@@ -1,0 +1,52 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>aspnet-FastFood-F2FF4416-F66A-48D5-9667-0D874ADB2F28</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="NewFolder\StyleSheet.css" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="NewFolder\StyleSheet.css">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.0.12" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="6.0.12" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.12" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.12" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.12">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.11" />
+    <PackageReference Include="SendGrid" Version="9.28.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Assets\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\lib\Image\baguette.jpg" />
+    <None Include="wwwroot\lib\Image\chapati.png" />
+    <None Include="wwwroot\lib\Image\cornet.jpg" />
+    <None Include="wwwroot\lib\Image\kafteji.png" />
+    <None Include="wwwroot\lib\Image\libanais.png" />
+    <None Include="wwwroot\lib\Image\makloub.png" />
+    <None Include="wwwroot\lib\Image\mlawi.png" />
+    <None Include="wwwroot\lib\Image\panini.jpg" />
+    <None Include="wwwroot\lib\Image\pizza01.jpg" />
+    <None Include="wwwroot\lib\Image\pizza02.jpg" />
+    <None Include="wwwroot\lib\Image\tacos.jfif" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,89 @@
+﻿@model FastFood.Models.Order
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_SideBar.cshtml";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Order</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Date)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Date)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Total)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Total)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.PayementMode)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.PayementMode)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.State)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.State)
+        </dd>
+    </dl>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Plate Name
+            </th>
+            <th>
+                Price
+            </th>
+            <th>
+                Description
+            </th>
+            <th>
+                Number
+            </th>
+            <th>
+
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Meals)
+        {
+            <tr>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Plate.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Plate.Price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Plate.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Number)
+                </td>
+                <td>
+                    <a asp-controller="Meals" asp-action="plus" asp-route-id="@item.Id">+</a> |
+                    <a asp-controller="Meals" asp-action="moin" asp-route-id="@item.Id">-</a> |
+                    <a asp-controller="Meals" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<div>
+    <a asp-action="ConfirmOrder" asp-route-id="@Model?.Id">Confirm</a>
+</div>

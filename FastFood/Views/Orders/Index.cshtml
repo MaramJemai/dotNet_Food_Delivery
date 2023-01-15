@@ -1,0 +1,55 @@
+﻿@model IEnumerable<FastFood.Models.Order>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_SideBar.cshtml";
+}
+
+<table id="centered" class="table centered">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Total)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PayementMode)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.State)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Total)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PayementMode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.State)
+            </td>
+           <td>
+             <a asp-action="Details" asp-route-id="@item.Id">Details</a> 
+           </td>
+        </tr>
+}
+    </tbody>
+</table>
+<style>
+    .centered {
+  position: fixed;
+  width:fit-content;
+  top: 50%;
+  left:50%;
+  transform: translate(-50%, -50%);
+}
+</style>

@@ -1,0 +1,137 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - FastFood</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/FastFood.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/SideBarStyle.css" type="text/css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css" type="text/css">
+</head>
+<body>
+<nav class="sidebar close">
+    <header>
+        <div class="image-text">
+            <span class="image">
+                <!--<img src="logo.png" alt="">-->
+            </span>
+            <div class="text logo-text">
+                    <span class="name">
+                    </span>
+            </div>
+        </div>
+        <i class='bx bx-chevron-right toggle'></i>
+    </header>
+
+    <div class="menu-bar">
+        <div class="menu">
+
+            
+            <ul class="menu-links">
+                <li class="search-box">
+                    <i class='bx bx-search icon'></i>
+                    <input type="text" placeholder="Search...">
+                </li>
+
+                <li class="nav-link">
+                        <a asp-controller="Plates" asp-action="List">
+                            <i class='bx bx-home-alt icon'></i>
+                        <span class="text nav-text">Dashboard</span>
+                    </a>
+                </li>
+
+                <li class="nav-link">
+                        <a asp-controller="Orders" asp-action="LastOrder" >
+                        <i class='bx bx-cart icon'></i>
+                        <span class="text nav-text">Order</span>
+                    </a>
+                </li>
+
+                <li class="nav-link">
+                        <a asp-controller="Orders" asp-action="Index">
+                            <i class='bx bx-layer icon'></i>
+                        <span class="text nav-text">Orders History</span>
+                    </a>
+                </li>
+                <li class="nav-link">
+                    <a asp-area="Identity" asp-page="/Account/Manage/Index">
+                        <i class='bx bx-cookie icon'></i>
+                        <span class="text nav-text">Settings</span>
+                    </a>
+                </li>
+
+                <li class="nav-link">
+                     <a asp-controller="Favorites" asp-action="Index">
+                        <i class='bx bx-heart icon'></i>
+                        <span class="text nav-text">Favourites</span>
+                    </a>
+                </li>
+
+              
+
+            </ul>
+        </div>
+        <div class="bottom-content">
+            <ul>
+                <li class="nav-link">
+                        <a href="#">
+                    <form id="logoutForm" class="text nav-text" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                        <button  type="submit" class="nav-link btn btn-link text-dark">       
+                           <i class='bx bx-log-out icon'></i> <span class="text nav-text"> Logout</span>
+                        </button>
+                     </form>
+                     </a>
+                </li>
+                <li class="mode">
+                <div class="sun-moon">
+                    <i class='bx bx-moon icon moon'></i>
+                    <i class='bx bx-sun icon sun'></i>
+                </div>
+                <span class="mode-text text">Dark mode</span>
+                <div class="toggle-switch">
+                    <span class="switch"></span>
+                </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+</nav>
+<section class="home">
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+ </section>
+ <script>
+    const body = document.querySelector('body'),
+        sidebar = body.querySelector('nav'),
+        toggle = body.querySelector(".toggle"),
+        searchBtn = body.querySelector(".search-box"),
+        modeSwitch = body.querySelector(".toggle-switch"),
+        modeText = body.querySelector(".mode-text");
+    toggle.addEventListener("click", () => {
+        sidebar.classList.toggle("close");
+    })
+    searchBtn.addEventListener("click", () => {
+        sidebar.classList.remove("close");
+    })
+    modeSwitch.addEventListener("click", () => {
+        body.classList.toggle("dark");
+        if (body.classList.contains("dark")) {
+            modeText.innerText = "Light mode";
+        } else {
+            modeText.innerText = "Dark mode";
+        }
+    });
+ </script>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="~/js/site.js" asp-append-version="true"></script>
+@await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,40 @@
+﻿@model IEnumerable<FastFood.Models.Favorite>
+
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_SideBar.cshtml";
+}
+<link rel="stylesheet" href="~/css/StyleSheet.css" type="text/css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" type="text/css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
+<div class="container d-flex justify-content-center mt-100">
+    <div class="row">
+        @foreach (var item in Model) {
+        <div class="col-md-3">
+            <div class="product-wrapper mb-45 text-center">
+                <div class="product-img">
+                    <a href="#" data-abc="true">
+                        <img width="200" height="300" src=@Html.DisplayFor(modelItem => item.Plate.Photo) alt="">
+                    </a>
+                    <span class="text-center"><i class="fa fa-dinar"></i>@Html.DisplayFor(modelItem => item.Plate.Name) @Html.DisplayFor(modelItem => item.Plate.Price)</span>
+                    <div class="product-action">
+                        <div class="product-action-style">
+                            <a asp-controller="Plates" asp-action="Eye" asp-route-id="@item.Id"> <i class="fa fa-eye"></i> </a>
+                             <a asp-controller="Favorites" asp-action="Delete" asp-route-id="@item.Id"> <i class="fa fa-heart"></i> </a>
+                                <a asp-controller="Orders" asp-action="AddToOrder" asp-route-id="@item.Id"><i class="fa fa-shopping-cart"></i></a>
+
+                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        }
+
+    </div>
+</div>
